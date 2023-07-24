@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserModel } from './models/user.model';
+import { UserService } from './services/user.service';
 
 @Component({
   selector: 'app-user',
@@ -10,9 +11,16 @@ export class UserComponent implements OnInit {
   dataSource: UserModel[]=[]; //qualquer tipo de um array
   userAdd: UserModel = new UserModel;
 
+
+  constructor(private UserService: UserService){} //adicionado -- pegar os métodos do http
+
   ngOnInit(): void {
     this.dataSource=[
-      {id: 0, 
+   
+   
+      /*
+    
+    {id: 0, 
       name: 'teste',
       email: 'teste@email.com'
       },
@@ -21,11 +29,25 @@ export class UserComponent implements OnInit {
       email: 'teste1@email.com'
       },
 
+
+    */
+      
     ]
+    this.loadUsers();
+  }
+
+  loadUsers(){
+    this.UserService.getAll().subscribe((resul:UserModel[])=>{
+      console.log(resul);
+      this.dataSource=resul;
+    })
   }
 
   btnSearch(user:UserModel):void{
-    alert('buscando');
+    this.UserService.getById(user.id).subscribe((resultado: UserModel)=>{
+      let json = JSON.stringify(resultado);
+      alert(json);
+    })
   }
 
   btnDelete(user:UserModel):void{
