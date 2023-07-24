@@ -2,11 +2,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { LoginComponent } from './pages/login/login.component';
+import { AuthGuard } from './shared/auth-guard.service';
 
 const routes: Routes = [
-  {path: 'home', component: HomeComponent},
-  {path: 'contact', component: ContactComponent},
-  {path: ' ', redirectTo: 'home', pathMatch: 'full'},  // quando for vazio, redirecionar para página Home --OBS: não está funcionando
+  {path: 'home', component: HomeComponent, canActivate:[AuthGuard]},  //CanActivate --> controle de acesso -- só se tiver logado
+  {path: 'contact', component: ContactComponent, canActivate:[AuthGuard]},
+  {path: 'login', component: LoginComponent},   //rota de login
+  {path: '', redirectTo: 'login', pathMatch: 'full'},  // quando for vazio, redirecionar para página Home --OBS: não está funcionando
 ];
 
 @NgModule({

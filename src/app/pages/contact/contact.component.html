@@ -1,1 +1,28 @@
-<h1>Página Contato</h1>
+<div class="container">
+    <mat-card>
+        <mat-card-title>Entre em contato</mat-card-title>
+        <mat-card-content> <!--Conteúdo do card-->
+           <!--Colocar um formulario (Form field)-->
+           <div class="contact-form"> <!--Essas classes são para ser formatadas no css, por isso recebem nome -->
+            <mat-form-field>
+                <mat-label>Nome</mat-label>
+                <!--Ao informar "required" dizemos que o input é obrigatorio-->
+                <input required [(ngModel)]="nome" name="nome" matInput placeholder="Informe um nome">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input required [(ngModel)]="email" name="email" type="email" matInput placeholder="informe um Email">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Mensagem</mat-label>
+                <textarea required [(ngModel)]="mensagem" name="mensagem" matInput placeholder="Mensagem"></textarea>
+            </mat-form-field>
+
+            <button mat-raised-button (click)="enviarFormulario()" color="primary">Enviar</button>
+
+        </div>
+        </mat-card-content>
+      </mat-card>
+</div>

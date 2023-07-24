@@ -1,3 +1,4 @@
+<!--
 <nav class="navbar">
     <div class="container">
         <a class="navbar-brand" href="#">Logo</a>
@@ -7,3 +8,12 @@
         </ul>
     </div>
 </nav>
+-->
+<mat-toolbar color="primary">
+    <button (click)="showMenu()" mat-icon-button>
+     <mat-icon>menu</mat-icon>
+   </button>
+   <span>App</span>
+   <span class="example-spacer"></span>
+   <label>{{usuariologado}}</label>
+ </mat-toolbar>

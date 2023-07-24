@@ -12,6 +12,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
+import {MatCardModule} from '@angular/material/card';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
+import { LoginComponent } from './pages/login/login.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { AuthGuard } from './shared/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -20,6 +28,7 @@ import {MatIconModule} from '@angular/material/icon';
     ContactComponent,
     NavbarComponent,
     FooterComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,8 +37,14 @@ import {MatIconModule} from '@angular/material/icon';
     MatSidenavModule, //adicionado -- referente ao navbar
     MatListModule, //adicionado -- referente a lista
     MatIconModule, //adicionado -- referente ao icone
+    MatCardModule, //adicionado -- referente ao card no formulario
+    MatFormFieldModule, //adicionado -- referente ao formulario dentro do card
+    MatButtonModule, //adicionado -- referente ao botão presente no formulario de contato
+    MatInputModule,
+    FormsModule, // Referente ao NgModel -> relacionar o input ao declarado no ts, como nome...
+    MatToolbarModule, //Referente ao Toolbar -- Navbar
   ],
-  providers: [],
+  providers: [AuthGuard], //providers é todo escopo do projeto, só vai ter acesso, se estiver autenticado (feito login)
   bootstrap: [AppComponent]
 })
 export class AppModule { }

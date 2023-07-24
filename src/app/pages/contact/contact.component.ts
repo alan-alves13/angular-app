@@ -7,4 +7,19 @@ import { Component } from '@angular/core';
 })
 export class ContactComponent {
 
+  nome: string;
+  email: string;
+  mensagem: string;
+
+  constructor(){
+    this.nome="";
+    this.email="";
+    this.mensagem="";
+  }
+                  //void ---> função sem retorno
+  enviarFormulario():void{
+    console.log(this.nome);
+    console.log(this.email);
+    console.log(this.mensagem);
+  }
 }

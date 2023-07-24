@@ -1,23 +1,26 @@
 
-<app-navbar></app-navbar>  <!--Rota de Navegação-->
-<button type="button" mat-button (click)="drawer.toggle()">Toggle sidenav</button>
+<app-navbar [Drawer]="drawer"></app-navbar>  <!--Rota de Navegação, adicionado drawer--> 
 
 
 <mat-drawer-container class="example-container" autosize>
   <mat-drawer #drawer class="example-sidenav" mode="side">
    <!-- Lista de Menu-->
-   <mat-list role="list">
-    <mat-list-item (click)="drawer.toggle()" routerLink="home" role="listitem">
+   <mat-list role="list">   <!--ngIf esconde o home e contact no menu -->
+    <mat-list-item  *ngIf="isAuth" (click)="drawer.toggle()" routerLink="home" role="listitem">
       <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
       <span>Home</span>
     </mat-list-item>
     
-    <mat-list-item (click)="drawer.toggle()"  routerLink="contact" role="listitem">
+    <mat-list-item *ngIf="isAuth" (click)="drawer.toggle()"  routerLink="contact" role="listitem">
       <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="sentiment_satisfied"></mat-icon>
       <span>Contact</span>  
     </mat-list-item>
-    
 
+    <mat-list-item (click)="drawer.toggle()"  routerLink="login" role="listitem">
+      <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="login"></mat-icon>
+      <span>Login</span>  
+    </mat-list-item>
+    
   </mat-list>
 
   </mat-drawer>
