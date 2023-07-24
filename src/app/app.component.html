@@ -5,7 +5,7 @@
 <mat-drawer-container class="example-container" autosize>
   <mat-drawer #drawer class="example-sidenav" mode="side">
    <!-- Lista de Menu-->
-   <mat-list role="list">   <!--ngIf esconde o home e contact no menu -->
+   <mat-list role="list">   <!--ngIf esconde o home e contact e user no menu -->
     <mat-list-item  *ngIf="isAuth" (click)="drawer.toggle()" routerLink="home" role="listitem">
       <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
       <span>Home</span>
@@ -16,10 +16,16 @@
       <span>Contact</span>  
     </mat-list-item>
 
+    <mat-list-item *ngIf="isAuth" (click)="drawer.toggle()"  routerLink="user" role="listitem">
+      <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="person"></mat-icon>
+      <span>User</span>  
+    </mat-list-item>
+
     <mat-list-item (click)="drawer.toggle()"  routerLink="login" role="listitem">
       <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="login"></mat-icon>
       <span>Login</span>  
     </mat-list-item>
+  
     
   </mat-list>
 

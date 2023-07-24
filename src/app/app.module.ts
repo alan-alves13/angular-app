@@ -20,6 +20,8 @@ import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './pages/login/login.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { AuthGuard } from './shared/auth-guard.service';
+import { UserComponent } from './pages/user/user.component';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import { AuthGuard } from './shared/auth-guard.service';
     NavbarComponent,
     FooterComponent,
     LoginComponent,
+    UserComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,6 +46,7 @@ import { AuthGuard } from './shared/auth-guard.service';
     MatInputModule,
     FormsModule, // Referente ao NgModel -> relacionar o input ao declarado no ts, como nome...
     MatToolbarModule, //Referente ao Toolbar -- Navbar
+    MatTableModule, //Usar a tabela oferecida pelo angula Material
   ],
   providers: [AuthGuard], //providers é todo escopo do projeto, só vai ter acesso, se estiver autenticado (feito login)
   bootstrap: [AppComponent]
